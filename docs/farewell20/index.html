@@ -642,7 +642,6 @@ kunci()
 fetch("https://script.google.com/macros/s/AKfycbzvA7CJcXQtf76ePw2zMi9yI7Q5yWwIDStaU_WR/exec?action=cekwa&wa="+nomor, {
   'method' : 'get'}).then(function(response) {
     return response.text().then(function(text) {
-      alert(text);
 	  if (text != "gaada") {
 	  text = text.split(",")
 	  document.getElementById("nama").value = text[1]
@@ -713,12 +712,10 @@ arr.push(konversinomor(document.getElementById("wa").value))
 arr.push(localStorage.getItem("rsvp"))
 arr.push(document.getElementById("email").value)
 document.getElementById("kataloading").innerHTML = "Gasspoll..."
-alert(arr)
 fetch("https://script.google.com/macros/s/AKfycbzvA7CJcXQtf76ePw2zMi9yI7Q5yWwIDStaU_WR/exec?action=simpan&data="+arr, {
   'method' : 'get'}).then(function(response) {
     return response.text().then(function(text) {
 	text = text.split(",")
-      alert(text[0]);
 	  document.getElementById("kataloading").innerHTML = "Sek, Dilut maneh..."
 if (text=="" || text==null){
 suksesUpload()
@@ -758,7 +755,6 @@ function suksesUploadNew(param){
 fetch("https://script.google.com/macros/s/AKfycbzvA7CJcXQtf76ePw2zMi9yI7Q5yWwIDStaU_WR/exec?action=convertPDF&data="+param, {
   'method' : 'get'}).then(function(response) {
     return response.text().then(function(text) {
-	alert(text)
 	clearstorage()
 	if (document.getElementById("hadir").checked == true){localStorage.setItem("simpan","hadir")}
 	else {localStorage.setItem("simpan","gakhadir")}
