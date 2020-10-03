@@ -604,12 +604,22 @@ fetch("https://script.google.com/macros/s/AKfycbzvA7CJcXQtf76ePw2zMi9yI7Q5yWwIDS
 	  text = text.split(",")
 	  document.getElementById("nama").value = text[1]
 	  document.getElementById(text[2]).checked = true
+	  if (text[3] == "hadir"){document.getElementById("jikahadir").style.display = "block"}
+	  document.getElementById(text[3]).checked = true
+	  document.getElementById("email").value = text[4]
+	  document.getElementById("btnnext").style.display = "none";
+	  document.getElementById("btnbatal").style.display = "block"
+	  document.getElementById("btns1").style.display = "table-cell"
+	  sessionStorage.setItem("ID", text[0])
+	  }
+	  else {
 	  document.getElementById("hadir").disabled = false
 	  document.getElementById("gakhadir").disabled = false
 	  document.getElementById("email").disabled = false
+	  document.getElementById("btnnext").style.display = "block";
+	  sessionStorage.removeItem("ID")
 	  }
 	  document.getElementById("kehadiran").style.display = "block";
-	  document.getElementById("btnnext").style.display = "block";
 	  document.getElementById("load").style.display = "none";
     });
   });
@@ -692,9 +702,7 @@ document.getElementById("btnnext").style.display = "none";
 document.getElementById("btns2").style.display = "none";
 document.getElementById("btns1").style.display = "block";
 document.getElementById("btnbatal").style.display = "block";
-if (localStorage.getItem("new") != null && localStorage.getItem("editbaru") == null){
 clearstorage()
-localStorage.removeItem("edit")}
 }
 function siapupload(param) {
 document.getElementById("kataloading").innerHTML = "Sek, sabar..."
