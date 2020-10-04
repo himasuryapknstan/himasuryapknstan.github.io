@@ -609,17 +609,7 @@ myModal.show();
 localStorage.removeItem("editbaru")}
 }
 if (localStorage.getItem("nama") != null){
-document.getElementById("nama").value = localStorage.getItem("nama")
-document.getElementById(localStorage.getItem("angkatan")).checked = true
-document.getElementById("wa").value = localStorage.getItem("wa")
-document.getElementById(localStorage.getItem("rsvp")).checked = true
-document.getElementById("email").value = localStorage.getItem("email")
-document.getElementById("btnnext").style.display = "none";
-document.getElementById("btnceknomor").style.display = "none";
-document.getElementById("btnbatal").style.display = "block"
-document.getElementById("kehadiran").style.display = "block"
-kunci()
-if (document.getElementById("hadir").checked) {document.getElementById("jikahadir").style.display = "block"}
+clearstorage()
 }
 }
 
