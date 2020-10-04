@@ -149,7 +149,7 @@ background-color:black;
       <div class="modal-body">
 	  <table><tr><td>Email : </td>
 	  <td>
-        <input id="emailmodal" type="email" class="form-control" placeholder="Contoh : sopojarwo@gmail.com">
+        <input id="emailmodal" type="email" class="form-control" placeholder="Contoh : sopojarwo@gmail.com" onkeydown="myFunctionModal(event)" onkeyup="myFunction2Modal(event)">
 	  </td></tr>
 	  <tr><td colspan="2">
         Email ini akan digunakan untuk pengiriman <i> E-Ticket </i>. Jadi pastikan email tersebut aktif<br>
@@ -483,7 +483,7 @@ background-color:black;
 <br>
 <div id="jikahadir" style="display:none">
 <h6>Email</h6>
-<input id="email" type="email" class="form-control" placeholder="Contoh : sopojarwo@gmail.com">
+<input id="email" type="text" class="form-control" placeholder="Contoh : sopojarwo@gmail.com" onkeydown="myFunction(event)" onkeyup="myFunction2(event)">
 Email ini akan digunakan untuk pengiriman <i>E-Ticket</i>. Jadi pastikan email tersebut aktif
 <br><br>
  </div>
@@ -539,6 +539,7 @@ Bukti transfer berhasil dikirim. Menunggu konfirmasi</div>
 </div>
 </div>
 <script>
+var hasil
 var tglexpired = "07"
 var jamexpired = "10"
 function konversinomor(str){
@@ -1021,6 +1022,30 @@ document.getElementById("suksesupload").style.display = "block"
 clearstorage()
 localStorage.removeItem("new")
 localStorage.removeItem("editbaru")
+}
+function myFunction(event) {
+  var x = event.which || event.keyCode;
+  if (x == 32){
+  hasil = document.getElementById("email").value.trimEnd()}
+}
+function myFunction2(event) {
+  var x = event.which || event.keyCode;
+  if (x == 32){
+  document.getElementById("email").value = hasil}
+}
+function myFunctionModal(event) {
+  var x = event.which || event.keyCode;
+  if (x == 32){
+  hasil = document.getElementById("emailmodal").value.trimEnd()}
+}
+function myFunction2Modal(event) {
+  var x = event.which || event.keyCode;
+  if (x == 32){
+  document.getElementById("emailmodal").value = hasil}
+}
+function keytest(event){
+  var x = event.which || event.keyCode;
+  alert(x)
 }
 document.addEventListener("DOMContentLoaded", awal);
 document.getElementById("btnUlang").addEventListener("click",tombol);
