@@ -194,7 +194,7 @@ background-color:black;
         </button>
       </div>
       <div id="isiselamat" class="modal-body">
-        Pengisian RSVP kamu Berhasil.<br>Terima kasih atas partisipasi kamu. E-ticket akan dikirimkan ke email yang sudah diisikan maksimal dalam 24 jam. So, jangan lupa cek email ya rek...
+        Pengisian RSVP kamu Berhasil.<br>Terima kasih atas partisipasi kamu. E-ticket akan dikirimkan ke email yang sudah diisikan maksimal dalam 24 jam. Pastikan kembali data kamu sudah tersimpan dengan memasukkan kembali Nama, Angkatan, dan No. <i>Whatsapp</i> yang sama pada RSVP berikut.
       </div>
       <div class="modal-footer">
         <button type="button" data-dismiss="modal" class="btn btn-primary">Oke</button>
@@ -708,10 +708,7 @@ fetch("https://script.google.com/macros/s/AKfycbzvA7CJcXQtf76ePw2zMi9yI7Q5yWwIDS
     return response.text().then(function(text) {
 	text = text.split(",")
 	  document.getElementById("kataloading").innerHTML = "Sek, Dilut maneh..."
-if (text=="" || text==null){
-suksesUpload()
-}
-else if(text =="ganda"){
+if(text =="ganda"){
 bukakunci()
 document.getElementById("btnnext").style.display = "block";
 document.getElementById("load").style.display = "none";
