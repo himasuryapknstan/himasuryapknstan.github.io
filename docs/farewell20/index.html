@@ -540,7 +540,7 @@ Bukti transfer berhasil dikirim. Menunggu konfirmasi</div>
 </div>
 <script>
 var hasil
-var tglexpired = "07"
+var tglexpired = "7"
 var jamexpired = "10"
 function konversinomor(str){
   var res = str.slice(0,1);
@@ -598,7 +598,7 @@ else {
 var now = new Date()
 var tglnow = now.getDate()
 var jamnow = now.getHours()
-if ( parseInt(tglnow) >= parseInt(tglexpired) || (parseInt(tglnow) == parseInt(tglexpired) && parseInt(jamnow) >= parseInt(jamexpired)) ){
+if ( parseInt(tglnow) > parseInt(tglexpired) || (parseInt(tglnow) == parseInt(tglexpired) && jamnow >= parseInt(jamexpired)) ){
 kunci()
 document.getElementById("btnceknomor").disabled = true
 var myModal = new bootstrap.Modal(document.getElementById("expired"), {backdrop:'static',keyboard:false});
