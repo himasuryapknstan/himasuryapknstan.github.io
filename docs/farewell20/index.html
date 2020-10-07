@@ -409,15 +409,32 @@ background-color:black;
         </button>
       </div>
       <div class="modal-body">
-        Masa pengisian RSVP sudah berakhir. Nantikan acara Himasurya selanjutnya rekk..
+        Masa pengisian RSVP sudah berakhir. Nantikan acara Himasurya selanjutnya rekk.. Tapi kalo mau cek RSVP kamu udh masuk apa belum masih bisa kok
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-dismiss="modal" >Oke</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Oke</button>
       </div>
     </div>
   </div>
 </div>
-
+<!-- Modal -->
+<div class="modal fade" id="gakedaftar" role="dialog" data-backdrop="static" data-keyboard="false" tabindex="-1"
+      aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" >
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Belum Terdaftar</h5>
+      </div>
+      <div class="modal-body">
+        Kamu belum terdaftar pada RSVP Farewell ini. Jika sebelumnya sudah mengisi RSVP silahkan klik <b>"Bantuan</b>" <br>So, nantikan acara himasurya selanjutnya...
+      </div>
+      <div class="modal-footer">
+        <button type="button" onclick="bantuan()" class="btn btn-secondary">Bantuan</button>
+		<button type="button" onclick="refresh()" class="btn btn-primary">Oke</button>
+      </div>
+    </div>
+  </div>
+</div>
 <div class="kontener">
 <div class="body">
 <h1 style="text-align:center;font-family:Lobster;cursive;">Himasurya Farewell 2020</h1>
@@ -599,8 +616,6 @@ var now = new Date()
 var tglnow = now.getDate()
 var jamnow = now.getHours()
 if ( parseInt(tglnow) > parseInt(tglexpired) || (parseInt(tglnow) == parseInt(tglexpired) && jamnow >= parseInt(jamexpired)) ){
-kunci()
-document.getElementById("btnceknomor").disabled = true
 var myModal = new bootstrap.Modal(document.getElementById("expired"), {backdrop:'static',keyboard:false});
 myModal.show();
 }
@@ -651,6 +666,15 @@ fetch("https://script.google.com/macros/s/AKfycbzvA7CJcXQtf76ePw2zMi9yI7Q5yWwIDS
 	  document.getElementById("btnnext").style.display = "block";
 	  sessionStorage.removeItem("ID")
 	  }
+	  var now = new Date()
+	var tglnow = now.getDate()
+	var jamnow = now.getHours()
+	if ( parseInt(tglnow) > parseInt(tglexpired) || (parseInt(tglnow) == parseInt(tglexpired) && jamnow >= parseInt(jamexpired)) ){
+	kunci()
+	document.getElementById("btnnext").disabled = true
+	var myModal = new bootstrap.Modal(document.getElementById("gakedaftar"), {});
+	myModal.show();
+	}
 	  document.getElementById("kehadiran").style.display = "block";
 	  document.getElementById("load").style.display = "none";
     });
@@ -658,7 +682,6 @@ fetch("https://script.google.com/macros/s/AKfycbzvA7CJcXQtf76ePw2zMi9yI7Q5yWwIDS
 }
 }
 function nomorketemu(hasil) {
-
 document.getElementById("hadir").disabled = false
 document.getElementById("gakhadir").disabled = false
 document.getElementById("email").disabled = false
@@ -679,6 +702,7 @@ if (hasil[3] == "hadir") {document.getElementById("jikahadir").style.display = "
 }
 document.getElementById("load").style.display = "none";
 document.getElementById("kehadiran").style.display = "block"
+
 }
 function next() {
 if ((document.getElementById("hadir").checked+document.getElementById("gakhadir").checked == 0) || (document.getElementById("hadir").checked == true && document.getElementById("email").value == "")){
@@ -945,6 +969,9 @@ localStorage.removeItem("angkatan")
 localStorage.removeItem("wa")
 localStorage.removeItem("rsvp")
 localStorage.removeItem("email")
+}
+function bantuan(){
+location.href="http://wa.me/6281232358986"
 }
 function suksesUpload(){
 document.getElementById("kataloading").innerHTML = "Dilut maneh..."
