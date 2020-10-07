@@ -660,12 +660,6 @@ fetch("https://script.google.com/macros/s/AKfycbzvA7CJcXQtf76ePw2zMi9yI7Q5yWwIDS
 	  sessionStorage.setItem("ID", text[0])
 	  }
 	  else {
-	  document.getElementById("hadir").disabled = false
-	  document.getElementById("gakhadir").disabled = false
-	  document.getElementById("email").disabled = false
-	  document.getElementById("btnnext").style.display = "block";
-	  sessionStorage.removeItem("ID")
-	  }
 	  var now = new Date()
 	var tglnow = now.getDate()
 	var jamnow = now.getHours()
@@ -675,6 +669,12 @@ fetch("https://script.google.com/macros/s/AKfycbzvA7CJcXQtf76ePw2zMi9yI7Q5yWwIDS
 	var myModal = new bootstrap.Modal(document.getElementById("gakedaftar"), {});
 	myModal.show();
 	}
+	  document.getElementById("hadir").disabled = false
+	  document.getElementById("gakhadir").disabled = false
+	  document.getElementById("email").disabled = false
+	  document.getElementById("btnnext").style.display = "block";
+	  sessionStorage.removeItem("ID")
+	  }
 	  document.getElementById("kehadiran").style.display = "block";
 	  document.getElementById("load").style.display = "none";
     });
