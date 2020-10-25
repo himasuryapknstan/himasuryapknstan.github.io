@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Himsur</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta version="v.1.0.1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+<style>
+
+.kontener {
+    display: table;
+    margin: auto;
+}
+.body {
+    display: table-cell;
+    vertical-align: middle;
+	width: 500px;
+	padding: 20px;
+	}
+
+	th, td {
+    padding: 3px;
+	padding-left: 10px;
+	text-align: left; 
+    vertical-align: middle;	
+	}
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+</style>
+  </head>
+  <body>
+
+<!-- Modal -->
+<div class="modal fade" id="zoominvitation" role="dialog" data-backdrop="static" data-keyboard="false" tabindex="-1"
+      aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" >
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel" id="headerintro">Zoom Meeting Berhasil Dibuat</h5>
+      </div>
+      <div class="modal-body">
+        <div class="mb-3">
+  <textarea class="form-control" id="invitation" rows="6" readonly></textarea>
+  <span id="sudahcopy"><i>Host pin</i> akan diberikan paling lambat 10 menit sebelum <i>Meeting</i> dimulai</span>
+  </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" onclick="copyinvitation()" id="btn1" style="display:none">Copy Invitation</button>
+        <button type="button" data-dismiss="modal" class="btn btn-primary" id="btn2" onclick="selesai()">Done</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="konfirmasi" role="dialog" data-backdrop="static" data-keyboard="false" tabindex="-1"
+      aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" >
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel" id="headerintro">Konfirmasi</h5>
+      </div>
+      <div class="modal-body">
+        <div class="mb-3">
+        Apakah data yang anda isikan sudah benar? Jika password kosong maka akan dibuatkan password otomatis secara acak.
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" data-dismiss="modal" class="btn btn-secondary" id="btn1">Tidak</button>
+        <button type="button" data-dismiss="modal" class="btn btn-primary" id="btn2" onclick="submit()">Ya, Benar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="gaklengkap" role="dialog" data-backdrop="static" data-keyboard="false" tabindex="-1"
+      aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" >
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel" id="headerintro">Data belum lengkap</h5>
+      </div>
+      <div class="modal-body">
+        <div class="mb-3">
+        Isi nama meeting terlebih dahulu
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" data-dismiss="modal" class="btn btn-primary">Oke</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="kontener">
+<div class="body">
+<h1 style="text-align:center"><i>To Do List</i></h1>
+  <h3 style="text-align:center">Input Baru</h3>
+  <br>
+<h6>Penanggung Jawab</h6>
+<select class="form-select" aria-label="Default select example" id="pj">
+  <option selected disabled>Pilih nama</option>
+  <option value="Firdaus">Firdaus</option>
+  <option value="Itjen">Inspektorat Jenderal</option>
+  <option value="Agama">Agama</option>
+</select><br>
+<h6>Request dari Kementerian</h6>
+<select class="form-select" aria-label="Default select example2" id="kementerian">
+  <option selected disabled>Pilih kementerian</option>
+  <option value="Sekjen">Sekertariat Jenderal</option>
+  <option value="Itjen">Inspektorat Jenderal</option>
+  <option value="Agama">Agama</option>
+</select><br>
+<h6>Judul</h6>
+<input id="pengundang" type="text" class="form-control" placeholder="Contoh : Zoom Meeting" onkeydown="myFunction(event,this)" onkeyup="myFunction2(event,this)" value="Zoom"><div style="font-size:85%">Contoh : <i>"Farewell 2020 - Snapgram H-1"</i></div><br>
+<h6>Tipe</h6>
+<table>
+<tr><td>
+<div class="form-check">
+		<input class="form-check-input" type="checkbox" name="tipe" id="Desain">
+		<label class="form-check-label" for="Desain">
+		Desain
+		</label>
+	</div></td>
+<td>
+	<div class="form-check">
+		<input class="form-check-input" type="checkbox" name="tipe" id="Video">
+		<label class="form-check-label" for="Video">
+		Video
+		</label>
+	</div>
+	</td>
+<td>
+	<div class="form-check">
+		<input class="form-check-input" type="checkbox" name="tipe" id="Jarkoman">
+		<label class="form-check-label" for="Jarkoman">
+		Jarkoman
+		</label>
+	</div>
+	</td>
+</tr>
+</table><br>
+<h6>Publikasi</h6>
+<table>
+<tr><td>
+<div class="form-check">
+		<input class="form-check-input" value="Snap" type="checkbox" name="publish" id="snap" onchange="test()">
+		<label class="form-check-label" for="snap">
+		Snapgram
+		</label>
+	</div></td>
+<td>
+	<div class="form-check">
+		<input class="form-check-input" value="Feeds" type="checkbox" name="publish" id="feeds" onchange="test()">
+		<label class="form-check-label" for="feeds">
+		Feeds IG
+		</label>
+	</div>
+	</td>
+<td>
+	<div class="form-check">
+		<input class="form-check-input" value="Internal" type="checkbox" name="publish" id="internal" onchange="test()">
+		<label class="form-check-label" for="internal">
+		Internal/Group
+		</label>
+	</div>
+	</td>
+</tr>
+</table><br>
+<h6>Deadline</h6>
+<input id="tgl" type="date" class="form-control" placeholder="Contoh : 2020-08-25"><br>
+<h6>Catatan</h6>
+<textarea class="form-control" placeholder="Isikan Catatan" id="desc" rows="5" ></textarea><br>
+<div class="row g-3 align-items-center">
+  <div class="col-auto" style="width:50%">
+	<h6>Jam</h6>
+    <input id="jam" type="text" class="form-control"placeholder="" readonly><br>
+  </div>
+  <div class="col-auto" style="width:50%">
+	<h6>Durasi</h6>
+	<div class="input-group flex-nowarp">
+    <input id="durasi" type="number" class="form-control" placeholder="" readonly>
+	<span class="input-group-text" id="addon-wrapping">Jam</span>
+	</div><br>
+  </div>
+</div>
+<h6>Pilihan Kapasitas <i>(Participants)</i></h6>
+
+<tr><td>
+
+<h6>Nama Pembuat Meeting</h6>
+<input id="pengundang" type="text" class="form-control" placeholder="Contoh : Zoom Meeting" onkeydown="myFunction(event,this)" onkeyup="myFunction2(event,this)" value="Zoom"><div style="font-size:85%"><i>"<span id="tekspengundang">Zoom</span> is inviting you to a scheduled Zoom meeting..."</i></div><br>
+<h6>Nama Meeting <i>(Topic)</i></h6>
+<input id="meeting" type="text" class="form-control" placeholder="Contoh : Zoom Meeting" onkeydown="myFunction(event,this)" onkeyup="myFunction2(event,this)"><br>
+<h6>Deskripsi (opsional)</h6>
+<textarea class="form-control" placeholder="Isikan deskripsi meeting" id="desc" rows="3"  onkeydown="myFunction(event,this)" onkeyup="myFunction2(event,this)"></textarea><br>
+<h6>Password Zoom Meeting</h6>
+<input id="pass" type="text" class="form-control"placeholder="Maksimal 10 karakter" maxlength=10 onkeydown="myFunction(event,this)" onkeyup="myFunction2(event,this)"><br>
+<br>
+<div align="center">
+<button type="button" id="next" class="btn btn-primary" onclick="konfirmasi()">Jadwalkan</button>
+<button id="load" class="btn btn-primari" type="button" style="display : none;" disabled>
+  <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+  Processing...
+</button>
+</div>
+<script>
+function test(){
+var check = document.getElementsByName("publish")
+var tipe = document.getElementsByName("tipe")
+var hasil = []
+for ( var i=0 ; i< check.length ; i++){
+if (check[i].checked){
+hasil.push(check[i].value)
+}}
+}
+</script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  </body>
+</html>
