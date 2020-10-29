@@ -214,6 +214,8 @@ body {font-family: Arial, Helvetica, sans-serif;}
 												<ul id="formnav" class="actions">
 													<li><input type="submit" id="nextbtn" value="Next >" class="primary" /></li>
 												</ul>
+												<br>
+												Form ini akan ditutup pada 31 Oktober 2020 Pukul 23:59
 											</div>
 										</div>
 									</form>
@@ -222,6 +224,10 @@ body {font-family: Arial, Helvetica, sans-serif;}
 								<form method="post" action="JavaScript:next2()">
 									<h3>Section 2 - Informasi Himatouria</h3>
 										<div class="row gtr-uniform">
+										<div class="col-12">
+										<h4>Pelaksanaan</h4>
+										Akan dilaksanakan pada <b>Jumat-Sabtu, 27-28 November 2020</b>
+										</div>
 										<div class="col-12">
 										<h4>Villa</h4>
 										</div>
@@ -306,6 +312,8 @@ body {font-family: Arial, Helvetica, sans-serif;}
 													<li><input type="button" value="< Prev" onclick="back(this)" dari="form2" ke="form1"/></li>
 													<li><input type="submit" value="Next >" class="primary"/><li>
 												</ul>
+												<br>
+												Form ini akan ditutup pada 31 Oktober 2020 Pukul 23:59
 											</div>
 										</div>
 								</form>
@@ -314,19 +322,6 @@ body {font-family: Arial, Helvetica, sans-serif;}
 								<form method="post" action="JavaScript:kirim()">
 									<h3>Section 3 - Masukan</h3>
 										<div class="row gtr-uniform">
-											<div class="col-12">
-											Pilihan Tanggal :
-											</div>
-											<div class="col-4 col-12-small">
-												<input type="radio" id="27-28" name="tanggal" value="27-28 November 2020" required>
-												<label for="27-28">27 - 28 November 2020</label>
-											</div>
-											<div class="col-4 col-12-small">
-												<input type="radio" id="28-29" name="tanggal" value="28-29 November 2020" required>
-												<label for="28-29">28 - 29 November 2020</label>
-											</div>
-											<div class="col-12">
-											</div>
 											<div class="col-12">
 											Apakah diizinkan oleh Orang Tua untuk mengikuti Himatouria pada tanggal tersebut?
 											</div>
@@ -349,7 +344,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
 											</div>
 											<div class="col-4 col-12-small">
 												<input type="radio" id="iuran_tidak" name="iuran" value="Tidak" required>
-												<label for="iuran_tidak">Tidak, itu cukup sepadan</label>
+												<label for="iuran_tidak">Tidak keberatan</label>
 											</div>
 											<div class="col-12">
 											</div>
@@ -450,7 +445,6 @@ var param = []
 param.push(document.getElementById("nama").value)
 param.push(document.getElementById("jurusan").value)
 param.push(document.getElementById("angkatan").value)
-param.push(document.querySelector('input[type=radio][name=tanggal]:checked').value)
 param.push(document.querySelector('input[type=radio][name=izin]:checked').value)
 param.push(document.querySelector('input[type=radio][name=iuran]:checked').value)
 fetch("https://script.google.com/macros/s/AKfycbzQKlnDc-saUij2RuYMu-Wy_VCioG7jmNXScOxaXQ/exec?action=input&data="+param, {
