@@ -3460,7 +3460,7 @@ input, select, textarea {
 			-ms-transition: opacity 0.2s ease;
 			transition: opacity 0.2s ease;
 			height: inherit;
-			left: 1.25em;
+			left: 1em;
 			line-height: inherit;
 			position: absolute;
 			top: 0;
@@ -3471,6 +3471,7 @@ input, select, textarea {
 				display: block;
 				height: inherit;
 				line-height: inherit;
+				vertical-align: text-top;
 			}
 
 				@media screen and (max-width: 736px) {
